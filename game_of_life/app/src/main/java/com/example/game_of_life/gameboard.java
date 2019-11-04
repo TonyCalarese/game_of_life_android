@@ -1,6 +1,7 @@
 package com.example.game_of_life;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -16,23 +17,18 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.List;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link gameboard.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link gameboard#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class gameboard extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     public static final String LIFE_ID = "GAMEOFLIFE";
-    private RecyclerView mPlanetRecyclerView;
+    private RecyclerView mGameBoard;
     private PlanetAdapter mAdapter;
 
     private OnFragmentInteractionListener mListener;
@@ -44,8 +40,7 @@ public class gameboard extends Fragment {
     public static gameboard newInstance(String param1, String param2) {
         gameboard fragment = new gameboard();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -65,12 +60,9 @@ public class gameboard extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_gameboard, container, false);
 
-        mPlanetRecyclerView = (RecyclerView) view.findViewById(R.id.planet_recycler_view);
-        mPlanetRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mGameBoard = (RecyclerView) view.findViewById(R.id.gameboard_recycler_view);
+        mGameBoard.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        if (savedInstanceState != null) {
-            mSubtitleVisible = savedInstanceState.getBoolean(PLANET_ID);
-        }
 
         return view;
     }
@@ -80,7 +72,7 @@ public class gameboard extends Fragment {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putBoolean(LIFE_ID, m);
+        //outState.putBoolean(LIFE_ID, mBoardState);
     }
 
     @Override
@@ -92,4 +84,65 @@ public class gameboard extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    private class TileHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        private Button mButton;
+        private int mPosition;
+
+        public TileHolder(LayoutInflater inflater, ViewGroup container) {
+            super(inflater.inflate(R.layout.tile, container, false));
+            mButton = (Button)itemView.findViewById(R.id.tile_button);
+            mButton.setOnClickListener(new View.OnClickListener() {
+                                           @Override
+                                           public void onClick(View view) {
+                                               if (mTouchEnabled && (mGrid[mPosition] == 0)) {
+                                                   mGrid[mPosition] = mTurn; // set move
+                                                   mTurn = 3 - mTurn; // flip player
+                                                   mAdapter.notifyItemChanged(mPosition); // reload ViewHolder
+
+                                               }
+                                           }
+                                       }
+            );
+        }
+
+        public void bindPosition(int p) {
+            mPosition = p;
+        }
+        public void onClick(View view){
+            Intent intent = PlanetPagerActivity.newIntent(getActivity(), mPlanet.getId());
+            startActivity(intent);
+        }
+
+    }
+
+
+
+    private class SquareAdapter extends RecyclerView.Adapter<SquareHolder> {
+        @Override
+        public void onBindViewHolder(SquareHolder holder, int position) {
+            // tell holder which place on grid it is representing
+            holder.bindPosition(position);
+            // actually change image displayed
+            if (mGrid[position] == X) {
+                holder.mButton.setBackgroundResource(R.drawable.x_sign);
+            } else if (mGrid[position] == O) {
+                holder.mButton.setBackgroundResource(R.drawable.o_sign);
+            } else {
+                holder.mButton.setBackgroundResource(R.drawable.empty);
+            }
+        }
+
+        @Override
+        public SquareHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            LayoutInflater inflater = LayoutInflater.from(getActivity());
+            return new SquareHolder(inflater, parent);
+        }
+
+        @Override
+        public int getItemCount() {
+            return 9;
+        }
+    }
+
 }
