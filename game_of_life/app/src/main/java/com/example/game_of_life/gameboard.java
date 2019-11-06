@@ -155,7 +155,6 @@ public class gameboard extends Fragment {
                 holder.mSquare.setBackgroundResource(R.drawable.tile_background);
             }
         }
-
         @Override
         public TileHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(getActivity());
@@ -168,9 +167,18 @@ public class gameboard extends Fragment {
         }
     }
     //go through the board and reset it to 0
+
+
     public void resetBoard() {
         for(int i= 0; i <mSize; i ++){
             mGrid[i] = 0;
+        }
+    }
+
+    public void nextGeneration(){
+       int[] mGridCopy = mGrid;
+        for(int i= 0; i <mSize; i ++){
+            if(mGrid[i] == 0);
         }
     }
 
