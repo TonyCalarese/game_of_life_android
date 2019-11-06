@@ -91,6 +91,8 @@ public class gameboard extends Fragment {
                                       @Override
                                       public void onClick(View view) {
                                           resetBoard();
+                                          mAdapter = new TileAdapter();
+                                          mGameBoard.setAdapter(mAdapter);
                                       }
                                   }
         );
@@ -116,9 +118,7 @@ public class gameboard extends Fragment {
 
     private class TileHolder extends RecyclerView.ViewHolder{
         private Button mSquare;
-        private Button mReset;
         private int mPosition;
-
         public TileHolder(LayoutInflater inflater, ViewGroup container) {
             super(inflater.inflate(R.layout.tile, container, false));
             mSquare = (Button)itemView.findViewById(R.id.tile_button);
@@ -130,9 +130,7 @@ public class gameboard extends Fragment {
                                                }else {
                                                    mGrid[mPosition] = 0;
                                                }
-
                                                    mAdapter.notifyItemChanged(mPosition); // reload ViewHolder
-
                                                }
                                        }
             );
@@ -169,9 +167,7 @@ public class gameboard extends Fragment {
             return mX_size * mY_size;
         }
     }
-
-
-
+    //go through the board and reset it to 0
     public void resetBoard() {
         for(int i= 0; i <mSize; i ++){
             mGrid[i] = 0;
