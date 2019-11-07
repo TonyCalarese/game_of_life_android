@@ -1,26 +1,18 @@
 package com.example.game_of_life;
 
-import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
-import java.util.List;
-
-
 
 public class gameboard extends Fragment {
     public static final String LIFE_ID = "GAMEOFLIFE";
@@ -175,11 +167,20 @@ public class gameboard extends Fragment {
         }
     }
 
-    public void nextGeneration(){
-       int[] mGridCopy = mGrid;
-        for(int i= 0; i <mSize; i ++){
-            if(mGrid[i] == 0);
+    //Holy Molly is this bad there must be a better way to do this
+    public void nextGeneration() {
+        int[][] mGridCopy = new int[mX_size][mY_size];
+        //loading the array
+        int index = 0;
+        for (int i = 0; i < mX_size; i++) {
+            for (int j = 0; j < mY_size; j++) {
+                mGridCopy[i][j] = mGrid[index];
+                index++; //Turning the 1d array into a 2d array
+            }
         }
-    }
 
+        
+
+
+    }
 }
