@@ -123,10 +123,9 @@ public class gameboard extends Fragment {
                                                 Drawable drawable = getResources().getDrawable(R.drawable.star_icon);
                                                 drawable = DrawableCompat.wrap(drawable);
                                                 mColorIndex = (mColorIndex + 1) % mColors.length;
-
                                                 DrawableCompat.setTint(drawable, getResources().getColor(mColors[mColorIndex]));
-
                                                 mColorButton.setCompoundDrawables(null, drawable, null, null);
+
 
                                                 mAdapter = new TileAdapter();
                                                 mGameBoard.setAdapter(mAdapter);
