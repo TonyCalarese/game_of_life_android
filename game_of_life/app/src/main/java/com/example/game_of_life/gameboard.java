@@ -192,26 +192,13 @@ public class gameboard extends Fragment {
         n = 0; //Reset n
         for (int i = 0; i < mX_size; i++) {
             for (int j = 0; j < mY_size; j++) {
-                /*
-                int mLeft = mGridCopy[i][j-1],
-                        mRight = mGridCopy[i][j+1],
-                        mUpLeft = mGridCopy[i-1][j-1],
-                        mUp = mGridCopy[i-1][j],
-                        mUpRight = mGridCopy[i-1][j+1],
-                        mDownLeft = mGridCopy[i+1][j-1],
-                        mDown = mGridCopy[i+1][j],
-                        mDownRight = mGridCopy[i+1][j+1];
-                        */
-               // X_index =  ((i + mX_size) % mX_size);
-               // Y_index =  ((j + mY_size) % mY_size); //Making sure that we do not go out of bounds
-
-                //Upperleft, center, right
+                //upperleft, center, right
                    lifeCounter = mGridCopy[(((i-1)+ mX_size) % mX_size)][(((j-1)+ mY_size) % mY_size)] +
                            mGridCopy[(((i-1)+ mX_size) % mX_size)][j] +
                            mGridCopy[(((i-1)+ mX_size) % mX_size)][(((j+1)+ mY_size) % mY_size)] +
-                //Left, current, right
+                //Left, right
                            mGridCopy[i][(((j-1)+ mY_size) % mY_size)] +
-                           mGridCopy[i][j] +
+                           //mGridCopy[i][j] +
                            mGridCopy[i][(((j+1)+ mY_size) % mY_size)] +
                 //Downleft, center, right
                            mGridCopy[(((i+1)+ mX_size) % mX_size)][(((j-1)+ mY_size) % mY_size)] +
@@ -219,21 +206,41 @@ public class gameboard extends Fragment {
                            mGridCopy[(((i+1)+ mX_size) % mX_size)][(((j+1)+ mY_size) % mY_size)];
 
 
+               /* Each generation, a living cell with two or three living neighbors stays alive.
+                  A cell with any other number of neighbors (less or more) dies.
+               */
+                if(mGridCopy[i][j] == 1){
+                    if(lifeCounter == 3 || lifeCounter == 2) {
+                        mGrid[n] = 1;
+                    }
+                    else
+                    {
+                        mGrid[n] = 0;
+                    }
+                }else{
+                    if(lifeCounter == 3) {
+                            mGrid[n] = 1;
+                    }
+                    else{
+                        mGrid[n] = 0;
+                    }
 
-                //if the amount of alive neighbors is greater than or equal to 3
-                if(lifeCounter >= 3){
-                    mGrid[n] = 1;
                 }
-                else{
-                    mGrid[n] = 0;
-                }
-
                 n++; //Update n to go to the next cell
 
-            }
+            } //end of j for loop
+        } //end of i for loop
+    }
+
+
+    public Boolean checkBoard(){
+        Boolean Cleared = false;
+        for(int i= 0; i <mSize; i ++){
+            if(mGrid[i] == 1){Cleared = true;}
         }
-
-
+        return Cleared;
+    }
+    public void changeColor(){
 
     }
 }
