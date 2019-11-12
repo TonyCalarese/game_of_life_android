@@ -1,9 +1,11 @@
 package com.example.game_of_life;
 
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.Fragment;
 
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -19,11 +21,15 @@ import android.widget.Button;
 public class gameboard extends Fragment {
     public static final String LIFE_ID = "GAMEOFLIFE";
     private RecyclerView mGameBoard;
-    private Button mReset, mStartButton;
+    private Button mResetButton, mStartButton, mCloneButton, mSaveButton, mOpenButton, mColorButton;
     private TileAdapter mAdapter;
     private int mX_size= 20, mY_size = 20; // Making the 20 by 20 board
     private int mSize = mX_size * mY_size;
-    private int[] mGrid = { //Must be a more efficient way to do this
+    private int mColorIndex = 0;
+    private int[] mColors = {R.color.colorPrimary, R.color.colorAccent, R.color.red,
+    R.color.gold, R.color.skyBlue};
+
+    private int[] mGrid = {
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //row1
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //row2
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //row3
@@ -80,8 +86,8 @@ public class gameboard extends Fragment {
         mGameBoard.setLayoutManager(new GridLayoutManager(getActivity(), mX_size));
         mAdapter = new TileAdapter();
         mGameBoard.setAdapter(mAdapter);
-        mReset = (Button) view.findViewById(R.id.reset_button);
-        mReset.setOnClickListener(new View.OnClickListener() {
+        mResetButton = (Button) view.findViewById(R.id.reset_button);
+        mResetButton.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View view) {
                                           resetBoard();
@@ -101,6 +107,31 @@ public class gameboard extends Fragment {
                                           mGameBoard.setAdapter(mAdapter);
                                       }
                                   }
+        );
+        mCloneButton = (Button) view.findViewById(R.id.clone_button);
+
+        mSaveButton= (Button) view.findViewById(R.id.save_button);
+
+        mOpenButton = (Button) view.findViewById(R.id.open_button);
+
+        mColorButton = (Button) view.findViewById(R.id.color_button);
+        mColorButton.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                //Code Source: https://stackoverflow.com/questions/46714018/change-android-button-drawable-icon-color-programmatically
+                                                //Please give credit where it is due
+                                                Drawable drawable = getResources().getDrawable(R.drawable.star_icon);
+                                                drawable = DrawableCompat.wrap(drawable);
+                                                mColorIndex = (mColorIndex + 1) % mColors.length;
+
+                                                DrawableCompat.setTint(drawable, getResources().getColor(mColors[mColorIndex]));
+
+                                                mColorButton.setCompoundDrawables(null, drawable, null, null);
+
+                                                mAdapter = new TileAdapter();
+                                                mGameBoard.setAdapter(mAdapter);
+                                            }
+                                        }
         );
         return view;
     }

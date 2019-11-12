@@ -7,8 +7,8 @@
 
     <Button
         android:id="@+id/tile_button"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
         android:layout_gravity="center"
         android:background="@drawable/tile_background"
         />

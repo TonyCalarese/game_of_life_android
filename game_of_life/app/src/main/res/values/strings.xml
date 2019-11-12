@@ -6,4 +6,8 @@
     <string name="reset">Reset</string>
     <string name="start">Start</string>
     <string name="stop">Stop</string>
+    <string name="clone">Clone Board</string>
+    <string name="color">Change Color</string>
+    <string name="save">Save Current Board</string>
+    <string name="open">Open Saved Board</string>
 </resources>
