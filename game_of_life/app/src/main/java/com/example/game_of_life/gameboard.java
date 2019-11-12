@@ -14,10 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+
+//Source for animation: https://developer.android.com/guide/topics/graphics/drawable-animation.html
 public class gameboard extends Fragment {
     public static final String LIFE_ID = "GAMEOFLIFE";
     private RecyclerView mGameBoard;
-    private Button mReset;
+    private Button mReset, mStartButton;
     private TileAdapter mAdapter;
     private int mX_size= 20, mY_size = 20; // Making the 20 by 20 board
     private int mSize = mX_size * mY_size;
@@ -53,7 +55,7 @@ public class gameboard extends Fragment {
     //mUpdateHandler = new Handler(new Handler.Callback()
     //@Overridepublic )
 
-    public static gameboard newInstance(String param1, String param2) {
+    public static gameboard newInstance() {
         gameboard fragment = new gameboard();
         Bundle args = new Bundle();
         fragment.setArguments(args);
@@ -88,10 +90,20 @@ public class gameboard extends Fragment {
                                       }
                                   }
         );
+        mStartButton = (Button) view.findViewById(R.id.next_gen_button);
+        mStartButton.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View view) {
+
+                                          nextGeneration();
+
+                                          mAdapter = new TileAdapter();
+                                          mGameBoard.setAdapter(mAdapter);
+                                      }
+                                  }
+        );
         return view;
     }
-
-
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
@@ -132,9 +144,6 @@ public class gameboard extends Fragment {
             mPosition = p;
         }
     }
-
-
-
     private class TileAdapter extends RecyclerView.Adapter<TileHolder> {
         @Override
         public void onBindViewHolder(TileHolder holder, int position) {
@@ -158,28 +167,72 @@ public class gameboard extends Fragment {
             return mX_size * mY_size;
         }
     }
-    //go through the board and reset it to 0
 
 
     public void resetBoard() {
+        //go through the board and reset it to 0
         for(int i= 0; i <mSize; i ++){
             mGrid[i] = 0;
         }
     }
 
-    //Holy Molly is this bad there must be a better way to do this
     public void nextGeneration() {
         int[][] mGridCopy = new int[mX_size][mY_size];
+        int lifeCounter = 0, n = 0, X_index, Y_index;
+
         //loading the array
-        int index = 0;
         for (int i = 0; i < mX_size; i++) {
             for (int j = 0; j < mY_size; j++) {
-                mGridCopy[i][j] = mGrid[index];
-                index++; //Turning the 1d array into a 2d array
+                mGridCopy[i][j] = mGrid[n];
+                n++; //Turning the 1d array into a 2d array
             }
         }
 
-        
+        //Getting the neighbor life count and setting the array
+        n = 0; //Reset n
+        for (int i = 0; i < mX_size; i++) {
+            for (int j = 0; j < mY_size; j++) {
+                /*
+                int mLeft = mGridCopy[i][j-1],
+                        mRight = mGridCopy[i][j+1],
+                        mUpLeft = mGridCopy[i-1][j-1],
+                        mUp = mGridCopy[i-1][j],
+                        mUpRight = mGridCopy[i-1][j+1],
+                        mDownLeft = mGridCopy[i+1][j-1],
+                        mDown = mGridCopy[i+1][j],
+                        mDownRight = mGridCopy[i+1][j+1];
+                        */
+               // X_index =  ((i + mX_size) % mX_size);
+               // Y_index =  ((j + mY_size) % mY_size); //Making sure that we do not go out of bounds
+
+                //Upperleft, center, right
+                   lifeCounter = mGridCopy[(((i-1)+ mX_size) % mX_size)][(((j-1)+ mY_size) % mY_size)] +
+                           mGridCopy[(((i-1)+ mX_size) % mX_size)][j] +
+                           mGridCopy[(((i-1)+ mX_size) % mX_size)][(((j+1)+ mY_size) % mY_size)] +
+                //Left, current, right
+                           mGridCopy[i][(((j-1)+ mY_size) % mY_size)] +
+                           mGridCopy[i][j] +
+                           mGridCopy[i][(((j+1)+ mY_size) % mY_size)] +
+                //Downleft, center, right
+                           mGridCopy[(((i+1)+ mX_size) % mX_size)][(((j-1)+ mY_size) % mY_size)] +
+                           mGridCopy[(((i+1)+ mX_size) % mX_size)][j] +
+                           mGridCopy[(((i+1)+ mX_size) % mX_size)][(((j+1)+ mY_size) % mY_size)];
+
+
+
+                //if the amount of alive neighbors is greater than or equal to 3
+                if(lifeCounter >= 3){
+                    mGrid[n] = 1;
+                }
+                else{
+                    mGrid[n] = 0;
+                }
+
+                n++; //Update n to go to the next cell
+
+            }
+        }
+
 
 
     }

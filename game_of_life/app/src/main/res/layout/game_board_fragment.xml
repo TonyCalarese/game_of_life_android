@@ -19,5 +19,11 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:text="@string/reset"/>
+    <Button
+        android:id="@+id/next_gen_button"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:text="@string/start"/>
 
 </LinearLayout>
