@@ -1,5 +1,6 @@
 package com.example.game_of_life;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -17,6 +18,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.os.Handler;
+
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 
 
 //Source for animation: https://developer.android.com/guide/topics/graphics/drawable-animation.html
@@ -130,13 +134,25 @@ public class gameboard extends Fragment {
         mSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                try {
+                    FileOutputStream fos = getActivity().openFileOutput("saveGrid", Context.MODE_PRIVATE);
+                    ObjectOutputStream oos = new ObjectOutputStream(fos);
+                    oos.writeObject(mGrid);
+                    fos.close();
+                }catch (Exception e) {
+                    e.printStackTrace();
+                }
 
             }});
         mOpenButton = (Button) view.findViewById(R.id.open_button);
         mOpenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                try{
+                    
+                }catch (Exception e) {
+                    e.printStackTrace();
+                }
             }});
         mColorButton = (Button) view.findViewById(R.id.color_button);
         mColorButton.setOnClickListener(new View.OnClickListener() {
