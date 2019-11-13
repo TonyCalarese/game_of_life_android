@@ -10,7 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70919947-4441-45da-98c4-caa7cf3ac1a4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/game_of_life/gameboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/game_of_life/gameboard.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game_of_life/gameboard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="542">
-              <caret line="54" column="78" lean-forward="true" selection-start-line="34" selection-start-column="4" selection-end-line="54" selection-end-column="78" />
+            <state relative-caret-position="36">
+              <caret line="23" column="54" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#gameboard#0;class#gameboard#0" />
@@ -393,8 +392,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game_of_life/gameboard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="54" column="78" lean-forward="true" selection-start-line="34" selection-start-column="4" selection-end-line="54" selection-end-column="78" />
+        <state relative-caret-position="36">
+          <caret line="23" column="54" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#gameboard#0;class#gameboard#0" />

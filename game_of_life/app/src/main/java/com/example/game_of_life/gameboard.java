@@ -21,7 +21,6 @@ import android.os.Handler;
 
 //Source for animation: https://developer.android.com/guide/topics/graphics/drawable-animation.html
 public class gameboard extends Fragment {
-    public static final String LIFE_ID = "GAMEOFLIFE";
     public static final String GRID_ID = "GAMEOFLIFEGRID";
     private RecyclerView mGameBoard;
     private Button mResetButton, mStartButton, mCloneButton, mSaveButton, mOpenButton, mColorButton;
