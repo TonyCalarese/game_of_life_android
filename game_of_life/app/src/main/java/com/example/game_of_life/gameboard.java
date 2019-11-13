@@ -1,5 +1,6 @@
 package com.example.game_of_life;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,11 +16,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.os.Handler;
 
 
 //Source for animation: https://developer.android.com/guide/topics/graphics/drawable-animation.html
 public class gameboard extends Fragment {
     public static final String LIFE_ID = "GAMEOFLIFE";
+    public static final String GRID_ID = "GAMEOFLIFEGRID";
     private RecyclerView mGameBoard;
     private Button mResetButton, mStartButton, mCloneButton, mSaveButton, mOpenButton, mColorButton;
     private TileAdapter mAdapter;
@@ -28,7 +31,7 @@ public class gameboard extends Fragment {
     private int mColorIndex = 0;
     private int[] mColors = {R.color.colorPrimary, R.color.colorAccent, R.color.red,
     R.color.gold, R.color.skyBlue};
-
+    private boolean mStarted = false;
     private int[] mGrid = {
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //row1
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, //row2
@@ -52,10 +55,11 @@ public class gameboard extends Fragment {
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 //row20
             };
     private OnFragmentInteractionListener mListener;
-
+    private Handler mNextGenHnadler = new Handler();
     //private Handler mTimer;
     public gameboard() {
         // Required empty public constructor
+
     }
 
     //mUpdateHandler = new Handler(new Handler.Callback()
@@ -81,6 +85,11 @@ public class gameboard extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+        int[] Grid = getActivity().getIntent().getIntArrayExtra(GRID_ID);
+        if(Grid != null){
+            mGrid = Grid;
+        }
         View view = inflater.inflate(R.layout.game_board_fragment, container, false);
         mGameBoard = (RecyclerView) view.findViewById(R.id.gameboard_recycler_view);
         mGameBoard.setLayoutManager(new GridLayoutManager(getActivity(), mX_size));
@@ -90,6 +99,7 @@ public class gameboard extends Fragment {
         mResetButton.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View view) {
+                                          ceaseFunctions();
                                           resetBoard();
                                           mAdapter = new TileAdapter();
                                           mGameBoard.setAdapter(mAdapter);
@@ -100,33 +110,40 @@ public class gameboard extends Fragment {
         mStartButton.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View view) {
-
-                                          nextGeneration();
-
-                                          mAdapter = new TileAdapter();
-                                          mGameBoard.setAdapter(mAdapter);
+                                          if(mStarted == false){
+                                              mNextGenHnadler.post(nextGen);
+                                              mStartButton.setText(R.string.stop);
+                                              mStarted=true;
+                                          } else {
+                                              ceaseFunctions();
+                                          }
                                       }
                                   }
         );
         mCloneButton = (Button) view.findViewById(R.id.clone_button);
-
+        mCloneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ceaseFunctions();
+                cloneBoard();
+            }});
         mSaveButton= (Button) view.findViewById(R.id.save_button);
+        mSaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+            }});
         mOpenButton = (Button) view.findViewById(R.id.open_button);
+        mOpenButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+            }});
         mColorButton = (Button) view.findViewById(R.id.color_button);
         mColorButton.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
-                                                //Code Source: https://stackoverflow.com/questions/46714018/change-android-button-drawable-icon-color-programmatically
-                                                //Please give credit where it is due
-                                                Drawable drawable = getResources().getDrawable(R.drawable.star_icon);
-                                                drawable = DrawableCompat.wrap(drawable);
-                                                mColorIndex = (mColorIndex + 1) % mColors.length;
-                                                DrawableCompat.setTint(drawable, getResources().getColor(mColors[mColorIndex]));
-                                                mColorButton.setCompoundDrawables(null, drawable, null, null);
-
-
+                                                changeColors();
                                                 mAdapter = new TileAdapter();
                                                 mGameBoard.setAdapter(mAdapter);
                                             }
@@ -134,6 +151,54 @@ public class gameboard extends Fragment {
         );
         return view;
     }
+
+    //ceased the current Handler if it is present
+    public void ceaseFunctions()
+    {
+        mNextGenHnadler.removeCallbacks(nextGen);
+        mStartButton.setText(R.string.start);
+        mStarted = false;
+    }
+    public void changeColors(){
+        //Code Source: https://stackoverflow.com/questions/46714018/change-android-button-drawable-icon-color-programmatically
+        //Please give credit where it is due
+        Drawable tile = getResources().getDrawable(R.drawable.tile_background);
+        tile = DrawableCompat.wrap(tile);
+        mColorIndex = (mColorIndex + 1) % mColors.length;
+        DrawableCompat.setTint(tile, getResources().getColor(mColors[mColorIndex]));
+        mColorButton.setCompoundDrawables(null, tile, null, null);
+
+        Drawable star = getResources().getDrawable(R.drawable.star_icon);
+        star = DrawableCompat.wrap(star);
+        mColorIndex = (mColorIndex + 1) % mColors.length;
+        DrawableCompat.setTint(star, getResources().getColor(mColors[mColorIndex]));
+        mColorButton.setCompoundDrawables(null, star, null, null);
+    }
+
+    //Used in the CloneButton to Clone the copy of the board
+    public void cloneBoard(){
+        Intent intent = new Intent(getActivity(), MainActivity.class);
+        intent.putExtra(GRID_ID, mGrid);
+        startActivity(intent);
+    }
+
+    // Define the code block to be executed
+
+    private Runnable nextGen = new Runnable() {
+        @Override
+        public void run() {
+            //Code Reference: https://stackoverflow.com/questions/37995564/what-is-the-way-to-make-an-infinite-loop-in-a-thread-android
+            //Please give credit where it is due
+            if (checkBoard() == true) {
+                ceaseFunctions();
+            } else {
+                nextGeneration();
+                mAdapter = new TileAdapter();
+                mGameBoard.setAdapter(mAdapter);
+                mNextGenHnadler.postDelayed(nextGen, 250);
+            }
+        }
+    };
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
@@ -237,8 +302,8 @@ public class gameboard extends Fragment {
 
 
                /* Each generation, a living cell with two or three living neighbors stays alive.
-                  A cell with any other number of neighbors (less or more) dies.
-               */
+                  A cell with any other number of neighbors (less or more) dies.*/
+
                 if(mGridCopy[i][j] == 1){
                     if(lifeCounter == 3 || lifeCounter == 2) {
                         mGrid[n] = 1;
@@ -262,15 +327,16 @@ public class gameboard extends Fragment {
         } //end of i for loop
     }
 
+    //Used to stop the handler if the board is already empty, that way we can interrupt the loop
+    public Boolean checkBoard() {
 
-    public Boolean checkBoard(){
-        Boolean Cleared = false;
-        for(int i= 0; i <mSize; i ++){
-            if(mGrid[i] == 1){Cleared = true;}
+        for (int i = 0; i < mSize; i++) {
+            if (mGrid[i] == 1) {
+                return false; //if you have at least one tile that is alive then return false
+            }
         }
-        return Cleared;
+        //if everything is 0 then it will return true
+        return true;
     }
-    public void changeColor(){
 
-    }
 }
