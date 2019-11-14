@@ -19,13 +19,19 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.os.Handler;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 
 //Source for animation: https://developer.android.com/guide/topics/graphics/drawable-animation.html
 public class gameboard extends Fragment {
     public static final String GRID_ID = "GAMEOFLIFEGRID";
+    public static final String file = "saveGrid.txt";
     private RecyclerView mGameBoard;
     private Button mResetButton, mStartButton, mCloneButton, mSaveButton, mOpenButton, mColorButton;
     private TileAdapter mAdapter;
@@ -135,7 +141,7 @@ public class gameboard extends Fragment {
             @Override
             public void onClick(View view) {
                 try {
-                    FileOutputStream fos = getActivity().openFileOutput("saveGrid", Context.MODE_PRIVATE);
+                    FileOutputStream fos = getActivity().openFileOutput(file, Context.MODE_PRIVATE);
                     ObjectOutputStream oos = new ObjectOutputStream(fos);
                     oos.writeObject(mGrid);
                     fos.close();
@@ -148,11 +154,19 @@ public class gameboard extends Fragment {
         mOpenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String txt = "Empty";
                 try{
-                    
+                    FileInputStream fis = getActivity().openFileInput(file);
+                    ObjectInputStream ois = new ObjectInputStream(fis);
+                    ois.readObject();
+                    fis.close();
+                    txt = ois.toString();
+
                 }catch (Exception e) {
                     e.printStackTrace();
                 }
+                mAdapter = new TileAdapter();
+                mGameBoard.setAdapter(mAdapter);
             }});
         mColorButton = (Button) view.findViewById(R.id.color_button);
         mColorButton.setOnClickListener(new View.OnClickListener() {
@@ -166,6 +180,7 @@ public class gameboard extends Fragment {
         );
         return view;
     }
+
 
     //ceased the current Handler if it is present
     public void ceaseFunctions()
