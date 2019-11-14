@@ -41,7 +41,7 @@ public class gameboard extends Fragment {
     //App Elements
     private RecyclerView mGameBoard;
     private Button mResetButton, mStartButton, mCloneButton, mSaveButton, mOpenButton, mColorButton,
-            m5SecButton, m1SecButton, m10SecButton;
+            m5SecButton, m1SecButton, m10SecButton, mSuperFastSpeedButton;
     private TileAdapter mAdapter;
     private TextView mGenCounterLabel, mCurrentSpeedLabel;
 
@@ -120,6 +120,7 @@ public class gameboard extends Fragment {
         mGenCounterLabel = (TextView) view.findViewById((R.id.GenCounter));
         mGenCounterLabel.setText("0"); //Default it to
         mCurrentSpeedLabel = (TextView) view.findViewById((R.id.current_speed));
+        mCurrentSpeedLabel.setText(String.valueOf(mSpeed));
         //Buttons
         mResetButton = (Button) view.findViewById(R.id.reset_button);
         mResetButton.setOnClickListener(new View.OnClickListener() {
@@ -203,24 +204,36 @@ public class gameboard extends Fragment {
                                             @Override
                                             public void onClick(View view) {
                                                 mSpeed = 10000; //Setting the speed to 10,000 millisecs
+                                                changeSpeedLabel();
                                             }
                                         }
         );
-        m5SecButton = (Button) view.findViewById(R.id.TenSec_button);
+        m5SecButton = (Button) view.findViewById(R.id.FiveSec_button);
         m5SecButton.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
-                                                mSpeed = 5000; //Setting the speed to 10,000 millisecs
+                                                mSpeed = 5000; //Setting the speed to 5,000 millisecs
+                                                changeSpeedLabel();
                                             }
                                         }
         );
-        m1SecButton = (Button) view.findViewById(R.id.TenSec_button);
+        m1SecButton = (Button) view.findViewById(R.id.OneSec_button);
         m1SecButton.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View view) {
-                                                mSpeed = 1000; //Setting the speed to 10,000 millisecs
-                                            }
-                                        }
+                                           @Override
+                                           public void onClick(View view) {
+                                               mSpeed = 1000; //Setting the speed to 1,000 millisecs
+                                               changeSpeedLabel();
+                                           }
+                                       }
+        );
+        mSuperFastSpeedButton = (Button) view.findViewById(R.id.superFast_button);
+        mSuperFastSpeedButton.setOnClickListener(new View.OnClickListener() {
+                                           @Override
+                                           public void onClick(View view) {
+                                               mSpeed = 250; //Setting the speed to 250 millisecs
+                                               changeSpeedLabel();
+                                           }
+                                       }
         );
 
 
@@ -248,7 +261,7 @@ public class gameboard extends Fragment {
         mStartButton.setText(R.string.start);
         mStarted = false;
     }
-    public void setSpeedLabel()
+    public void changeSpeedLabel()
     {
         mCurrentSpeedLabel.setText(String.valueOf(mSpeed));
     }

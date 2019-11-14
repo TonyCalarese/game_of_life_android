@@ -10,12 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70919947-4441-45da-98c4-caa7cf3ac1a4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/game_of_life/life_generator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/anim/pulse_animation.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/game_of_life/gameboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/game_of_life/gameboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/anim/rotate.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/game_board_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/game_board_fragment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
@@ -59,41 +54,41 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game_of_life/gameboard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="238" column="22" selection-start-line="238" selection-start-column="22" selection-end-line="238" selection-end-column="22" />
+            <state relative-caret-position="457">
+              <caret line="232" column="87" selection-start-line="232" selection-start-column="87" selection-end-line="232" selection-end-column="87" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#newInstance#0;class#gameboard#0" />
-                <element signature="e#5179#5637#0" expanded="true" />
-                <element signature="e#5636#5637#0" expanded="true" />
-                <element signature="e#5762#6430#0" expanded="true" />
-                <element signature="e#6429#6430#0" expanded="true" />
-                <element signature="e#6552#6726#0" expanded="true" />
-                <element signature="e#6725#6726#0" expanded="true" />
-                <element signature="e#6835#7318#0" expanded="true" />
+                <element signature="e#5239#5697#0" expanded="true" />
+                <element signature="e#5696#5697#0" expanded="true" />
+                <element signature="e#5822#6490#0" expanded="true" />
+                <element signature="e#6489#6490#0" expanded="true" />
+                <element signature="e#6612#6786#0" expanded="true" />
+                <element signature="e#6785#6786#0" expanded="true" />
+                <element signature="e#6895#7378#0" expanded="true" />
                 <element signature="e#6557#6828#0" />
-                <element signature="e#7317#7318#0" expanded="true" />
-                <element signature="e#7428#8094#0" expanded="true" />
-                <element signature="e#8093#8094#0" expanded="true" />
-                <element signature="e#8207#8582#0" expanded="true" />
-                <element signature="e#8581#8582#0" expanded="true" />
-                <element signature="e#8733#9084#0" expanded="true" />
-                <element signature="e#9083#9084#0" expanded="true" />
-                <element signature="e#9205#9556#0" expanded="true" />
-                <element signature="e#9555#9556#0" expanded="true" />
-                <element signature="e#9681#10032#0" expanded="true" />
-                <element signature="e#10031#10032#0" expanded="true" />
-                <element signature="e#8640#8641#0" expanded="true" />
-                <element signature="e#8670#8671#0" expanded="true" />
-                <element signature="e#10717#10718#0" expanded="true" />
-                <element signature="e#10782#10783#0" expanded="true" />
+                <element signature="e#7377#7378#0" expanded="true" />
+                <element signature="e#7488#8154#0" expanded="true" />
+                <element signature="e#8153#8154#0" expanded="true" />
+                <element signature="e#8267#8642#0" expanded="true" />
+                <element signature="e#8641#8642#0" expanded="true" />
+                <element signature="e#8816#9235#0" expanded="true" />
+                <element signature="e#9234#9235#0" expanded="true" />
+                <element signature="e#9357#9775#0" expanded="true" />
+                <element signature="e#9774#9775#0" expanded="true" />
+                <element signature="e#9896#10308#0" expanded="true" />
+                <element signature="e#10307#10308#0" expanded="true" />
+                <element signature="e#10449#10860#0" expanded="true" />
+                <element signature="e#10859#10860#0" expanded="true" />
+                <element signature="e#11027#11028#0" expanded="true" />
+                <element signature="e#11597#11598#0" expanded="true" />
                 <element signature="method#cloneBoard#0;class#gameboard#0" />
-                <element signature="e#11879#12620#0" expanded="true" />
-                <element signature="e#12619#12620#0" expanded="true" />
+                <element signature="e#12735#13476#0" expanded="true" />
+                <element signature="e#13475#13476#0" expanded="true" />
                 <element signature="method#onSaveInstanceState#0;class#gameboard#0" />
                 <element signature="class#TileHolder#0;class#gameboard#0" />
-                <element signature="e#13391#14074#0" expanded="true" />
-                <element signature="e#14073#14074#0" expanded="true" />
+                <element signature="e#14247#14930#0" expanded="true" />
+                <element signature="e#14929#14930#0" expanded="true" />
                 <element signature="e#12539#12540#0" expanded="true" />
                 <element signature="e#12576#12577#0" expanded="true" />
                 <element signature="e#13790#13791#0" expanded="true" />
@@ -118,17 +113,18 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/game_board_fragment.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="128" column="41" selection-start-line="128" selection-start-column="41" selection-end-line="128" selection-end-column="41" />
+            <state relative-caret-position="600">
+              <caret line="148" column="44" selection-start-line="148" selection-start-column="44" selection-end-line="148" selection-end-column="44" />
               <folding>
                 <element signature="e#1254#1269#0" expanded="true" />
-                <element signature="e#1650#1672#0" expanded="true" />
-                <element signature="e#1906#1928#0" expanded="true" />
-                <element signature="e#2309#2324#0" expanded="true" />
+                <element signature="e#1646#1668#0" expanded="true" />
+                <element signature="e#1898#1920#0" expanded="true" />
+                <element signature="e#2301#2316#0" expanded="true" />
                 <element signature="e#3190#3218#0" expanded="true" />
-                <element signature="e#3453#3478#0" expanded="true" />
-                <element signature="e#4387#4405#0" expanded="true" />
-                <element signature="e#4632#4649#0" expanded="true" />
+                <element signature="e#3455#3480#0" expanded="true" />
+                <element signature="e#4140#4157#0" expanded="true" />
+                <element signature="e#4389#4407#0" expanded="true" />
+                <element signature="e#4638#4655#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -136,15 +132,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+            <state relative-caret-position="285">
+              <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -477,13 +468,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
@@ -492,65 +476,73 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_gameboard.xml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/game_board_fragment.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="128" column="41" selection-start-line="128" selection-start-column="41" selection-end-line="128" selection-end-column="41" />
+        <state relative-caret-position="600">
+          <caret line="148" column="44" selection-start-line="148" selection-start-column="44" selection-end-line="148" selection-end-column="44" />
           <folding>
             <element signature="e#1254#1269#0" expanded="true" />
-            <element signature="e#1650#1672#0" expanded="true" />
-            <element signature="e#1906#1928#0" expanded="true" />
-            <element signature="e#2309#2324#0" expanded="true" />
+            <element signature="e#1646#1668#0" expanded="true" />
+            <element signature="e#1898#1920#0" expanded="true" />
+            <element signature="e#2301#2316#0" expanded="true" />
             <element signature="e#3190#3218#0" expanded="true" />
-            <element signature="e#3453#3478#0" expanded="true" />
-            <element signature="e#4387#4405#0" expanded="true" />
-            <element signature="e#4632#4649#0" expanded="true" />
+            <element signature="e#3455#3480#0" expanded="true" />
+            <element signature="e#4140#4157#0" expanded="true" />
+            <element signature="e#4389#4407#0" expanded="true" />
+            <element signature="e#4638#4655#0" expanded="true" />
           </folding>
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_gameboard.xml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="android-designer2" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/game_of_life/gameboard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="238" column="22" selection-start-line="238" selection-start-column="22" selection-end-line="238" selection-end-column="22" />
+        <state relative-caret-position="457">
+          <caret line="232" column="87" selection-start-line="232" selection-start-column="87" selection-end-line="232" selection-end-column="87" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#newInstance#0;class#gameboard#0" />
-            <element signature="e#5179#5637#0" expanded="true" />
-            <element signature="e#5636#5637#0" expanded="true" />
-            <element signature="e#5762#6430#0" expanded="true" />
-            <element signature="e#6429#6430#0" expanded="true" />
-            <element signature="e#6552#6726#0" expanded="true" />
-            <element signature="e#6725#6726#0" expanded="true" />
-            <element signature="e#6835#7318#0" expanded="true" />
+            <element signature="e#5239#5697#0" expanded="true" />
+            <element signature="e#5696#5697#0" expanded="true" />
+            <element signature="e#5822#6490#0" expanded="true" />
+            <element signature="e#6489#6490#0" expanded="true" />
+            <element signature="e#6612#6786#0" expanded="true" />
+            <element signature="e#6785#6786#0" expanded="true" />
+            <element signature="e#6895#7378#0" expanded="true" />
             <element signature="e#6557#6828#0" />
-            <element signature="e#7317#7318#0" expanded="true" />
-            <element signature="e#7428#8094#0" expanded="true" />
-            <element signature="e#8093#8094#0" expanded="true" />
-            <element signature="e#8207#8582#0" expanded="true" />
-            <element signature="e#8581#8582#0" expanded="true" />
-            <element signature="e#8733#9084#0" expanded="true" />
-            <element signature="e#9083#9084#0" expanded="true" />
-            <element signature="e#9205#9556#0" expanded="true" />
-            <element signature="e#9555#9556#0" expanded="true" />
-            <element signature="e#9681#10032#0" expanded="true" />
-            <element signature="e#10031#10032#0" expanded="true" />
-            <element signature="e#8640#8641#0" expanded="true" />
-            <element signature="e#8670#8671#0" expanded="true" />
-            <element signature="e#10717#10718#0" expanded="true" />
-            <element signature="e#10782#10783#0" expanded="true" />
+            <element signature="e#7377#7378#0" expanded="true" />
+            <element signature="e#7488#8154#0" expanded="true" />
+            <element signature="e#8153#8154#0" expanded="true" />
+            <element signature="e#8267#8642#0" expanded="true" />
+            <element signature="e#8641#8642#0" expanded="true" />
+            <element signature="e#8816#9235#0" expanded="true" />
+            <element signature="e#9234#9235#0" expanded="true" />
+            <element signature="e#9357#9775#0" expanded="true" />
+            <element signature="e#9774#9775#0" expanded="true" />
+            <element signature="e#9896#10308#0" expanded="true" />
+            <element signature="e#10307#10308#0" expanded="true" />
+            <element signature="e#10449#10860#0" expanded="true" />
+            <element signature="e#10859#10860#0" expanded="true" />
+            <element signature="e#11027#11028#0" expanded="true" />
+            <element signature="e#11597#11598#0" expanded="true" />
             <element signature="method#cloneBoard#0;class#gameboard#0" />
-            <element signature="e#11879#12620#0" expanded="true" />
-            <element signature="e#12619#12620#0" expanded="true" />
+            <element signature="e#12735#13476#0" expanded="true" />
+            <element signature="e#13475#13476#0" expanded="true" />
             <element signature="method#onSaveInstanceState#0;class#gameboard#0" />
             <element signature="class#TileHolder#0;class#gameboard#0" />
-            <element signature="e#13391#14074#0" expanded="true" />
-            <element signature="e#14073#14074#0" expanded="true" />
+            <element signature="e#14247#14930#0" expanded="true" />
+            <element signature="e#14929#14930#0" expanded="true" />
             <element signature="e#12539#12540#0" expanded="true" />
             <element signature="e#12576#12577#0" expanded="true" />
             <element signature="e#13790#13791#0" expanded="true" />
