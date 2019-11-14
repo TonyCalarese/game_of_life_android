@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.actions"
-            android:resource="@anim/rotate" />
+            android:resource="@anim/pulse_animation" />
 
         <activity android:name=".MainActivity">
             <intent-filter>

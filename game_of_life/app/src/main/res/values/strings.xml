@@ -10,4 +10,11 @@
     <string name="color">Change Color</string>
     <string name="save">Save Current Board</string>
     <string name="open">Open Saved Board</string>
+    <string name="numgen_title">Generation: </string>
+    <string name="change_speed_title">Change the BufferSpeed</string>
+    <string name="current_refresh">Current Refresh Rate: </string>
+
+    <string name="tenSecs">10 seconds</string>
+    <string name="fiveSecs">5 seconds</string>
+    <string name="oneSecs">1 second</string>
 </resources>
