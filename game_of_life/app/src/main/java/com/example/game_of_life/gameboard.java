@@ -18,6 +18,8 @@ import android.view.LayoutInflater;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.os.Handler;
 import android.widget.Toast;
@@ -102,6 +104,8 @@ public class gameboard extends Fragment {
         if(Grid != null){
             mGrid = Grid;
         }
+
+
         View view = inflater.inflate(R.layout.game_board_fragment, container, false);
         mGameBoard = (RecyclerView) view.findViewById(R.id.gameboard_recycler_view);
         mGameBoard.setLayoutManager(new GridLayoutManager(getActivity(), mX_size));
@@ -281,6 +285,10 @@ public class gameboard extends Fragment {
             // actually change image displayed
             if (mGrid[position] == 1) {
                 holder.mSquare.setBackgroundResource(R.drawable.star_icon);
+                //Code Referenced from: https://stackoverflow.com/questions/1634252/how-to-make-a-smooth-image-rotation-in-android
+                //Other Source: https://www.youtube.com/watch?v=fqU4zc_XeX0
+               Animation spinner = AnimationUtils.loadAnimation(getActivity(), R.anim.rotate);
+               holder.mSquare.startAnimation(spinner);
             } else {
                 holder.mSquare.setBackgroundResource(R.drawable.tile_background);
             }
