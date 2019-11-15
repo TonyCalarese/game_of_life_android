@@ -24,7 +24,7 @@ public class life_generator {
         n = 0; //Reset n
         for (int i = 0; i < mX_size; i++) {
             for (int j = 0; j < mY_size; j++) {
-                //upperleft, center, right
+                //upperleft, uppercenter, upperright
                 lifeCounter = mGridCopy[(((i-1)+ mX_size) % mX_size)][(((j-1)+ mY_size) % mY_size)] +
                         mGridCopy[(((i-1)+ mX_size) % mX_size)][j] +
                         mGridCopy[(((i-1)+ mX_size) % mX_size)][(((j+1)+ mY_size) % mY_size)] +
@@ -53,10 +53,6 @@ public class life_generator {
                     if(lifeCounter == 3) {
                         mGrid[n] = 1;
                     }
-                    else{
-                        mGrid[n] = 0;
-                    }
-
                 }
                 n++; //Update n to go to the next cell
 
