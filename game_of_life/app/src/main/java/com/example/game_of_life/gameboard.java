@@ -138,7 +138,7 @@ public class gameboard extends Fragment {
                                       @Override
                                       public void onClick(View view) {
                                           if(mStarted == false){
-                                              mNextGenHandler.post(nextGen);
+                                              mNextGenHandler.post(mNextGen);
                                               mStartButton.setText(R.string.stop);
                                               mStarted=true;
                                           } else {
@@ -230,7 +230,7 @@ public class gameboard extends Fragment {
         mSuperFastSpeedButton.setOnClickListener(new View.OnClickListener() {
                                            @Override
                                            public void onClick(View view) {
-                                               mSpeed = 250; //Setting the speed to 250 millisecs
+                                               mSpeed = 50; //Setting the speed to 50 millisecs
                                                changeSpeedLabel();
                                            }
                                        }
@@ -257,7 +257,7 @@ public class gameboard extends Fragment {
         if(checkBoard()== true){
             resetGenCounter(); //if the board is blank then reset the counter
         }
-        mNextGenHandler.removeCallbacks(nextGen);
+        mNextGenHandler.removeCallbacks(mNextGen);
         mStartButton.setText(R.string.start);
         mStarted = false;
     }
@@ -290,7 +290,7 @@ public class gameboard extends Fragment {
 
     // Define the code block to be executed
 
-    private Runnable nextGen = new Runnable() {
+    private Runnable mNextGen = new Runnable() {
         @Override
         public void run() {
             //Code Reference: https://stackoverflow.com/questions/37995564/what-is-the-way-to-make-an-infinite-loop-in-a-thread-android
@@ -302,7 +302,7 @@ public class gameboard extends Fragment {
             } else {
                 mGrid = life.nextGeneration(mGrid);
                 resetAdapter();
-                mNextGenHandler.postDelayed(nextGen, mSpeed);
+                mNextGenHandler.postDelayed(mNextGen, mSpeed);
                 incCounter();
             }
         }
