@@ -230,7 +230,7 @@ public class gameboard extends Fragment {
         mSuperFastSpeedButton.setOnClickListener(new View.OnClickListener() {
                                            @Override
                                            public void onClick(View view) {
-                                               mSpeed = 50; //Setting the speed to 50 millisecs
+                                               mSpeed = 10; //Setting the speed to 50 millisecs
                                                changeSpeedLabel();
                                            }
                                        }
