@@ -154,39 +154,7 @@ public class gameboard extends Fragment {
                 ceaseFunctions();
                 cloneBoard();
             }});
-        mSaveButton= (Button) view.findViewById(R.id.save_button);
-        mSaveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    FileOutputStream fos = getActivity().openFileOutput(file, Context.MODE_PRIVATE);
-                    ObjectOutputStream oos = new ObjectOutputStream(fos);
-                    oos.writeObject(mGrid);
-                    fos.close();
-                }catch (Exception e) {
-                    e.printStackTrace();
-                }
 
-            }});
-        mOpenButton = (Button) view.findViewById(R.id.open_button);
-        mOpenButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String txt = "Empty";
-                try{
-                    FileInputStream fis = getActivity().openFileInput(file);
-                    ObjectInputStream ois = new ObjectInputStream(fis);
-                    ois.readObject();
-                    fis.close();
-                    txt = ois.toString();
-                    Log.v(GRID_ID, txt);
-
-                }catch (Exception e) {
-                    e.printStackTrace();
-                }
-                mAdapter = new TileAdapter();
-                mGameBoard.setAdapter(mAdapter);
-            }});
         mColorButton = (Button) view.findViewById(R.id.color_button);
         mColorButton.setOnClickListener(new View.OnClickListener() {
                                             @Override
